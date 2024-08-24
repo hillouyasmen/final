@@ -117,11 +117,13 @@ function deleteContact(index) {
   loadContacts();
 }
 
-function deleteAllContacts() {
-  users.length = 0;
-  updatePeopleCount();
-  loadContacts();
-}
+unction deleteAllContacts() {
+  const confirmation = confirm("Are you sure you want to delete all contacts?");
+  if (confirmation) {
+    users.length = 0;
+    updatePeopleCount();
+    loadContacts();
+  }
 
 const users1 = [
   { username: "Yasmeen", phone: "054898443", photo: "image/photo1.jpg" },
