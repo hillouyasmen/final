@@ -3,7 +3,17 @@ const users = [
   { username: "Shroq", phone: "05334534", photo: "image/photo2.jpg" },
   { username: "Yara", phone: "05468767", photo: "image/photo3.jpg" },
   { username: "Maria", phone: "05307887", photo: "image/photo4.jpg" },
-  { username: "Rema", phone: "05462987", photo: "image/photo5.jpg" }
+  { username: "Rema", phone: "05462987", photo: "image/photo5.jpg" },
+  { username: "Noor", phone: "05475298", photo: "image/photo6.jpg" },
+  { username: "Angila", phone: "05462987", photo: "image/photo7.jpg" },
+  { username: "Lour", phone: "05462987", photo: "image/photo8.jpg" },
+  { username: "Miranda", phone: "05462987", photo: "image/photo9.jpg" },
+  { username: "Ales", phone: "05462987", photo: "image/photo10.jpg" }
+
+
+
+
+
 ];
 
 const list = document.querySelector(".list");
