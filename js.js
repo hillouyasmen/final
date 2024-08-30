@@ -162,3 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 searchInput.addEventListener('input', filterContacts);
+function deleteContact(index) {
+  const contactName = users[index].username; 
+  const confirmDelete = window.confirm(`Are you sure you want to delete ${contactName}?`);
+  if (confirmDelete) {
+    users.splice(index, 1);
+    updatePeopleCount();
+    loadContacts();
+  }
+}
