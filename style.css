@@ -1,68 +1,152 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phone Book</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="js.js" defer></script>
-</head>
-     <header> 
-            <h1>Phone Book </h1>
-        </header>
-    
-<body>
-    <div class="container">
-      
-    
-        <h4 id="peopleCount">  5 People</h4>
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search...">
-            <i class="Search icon"><img src="" alt=""></i>
-        </div>
-        <div id="searchActivePage" style="display: none;">
-           
-            
-        </div>
-        <div class="actions">
-            <button class="add icon" onclick="openPopup()" title="Add Contact">
-                <img src="image/add-user.png" alt="Add User">
-              </button>
-              
-              <button class="delete icon" onclick="deleteAllContacts()" title="Delete All Contacts">
-                <img src="image/delete.png" alt="Delete All">
-              
-              </button>
-           
-        </div>
-        <ul class="list contact-list">
-        </ul>
-    </div>
-    <div class="modal" id="myModal" onclick="closeModal(event)">
-        <div class="modal-content">
-            <span class="close-btn" id="closeModalBtn">&times;</span>
-            <h2 id="popupTitle">Add/Edit Contact</h2>
-            <input type="hidden" id="contactIndex">
-            <input type="text" id="inputUserName" placeholder="Name">
-            <input type="text" id="inputUserPhone" placeholder="Phone">
-            <input type="file" id="inputUserPhoto" title="Upload Photo" placeholder="Choose a photo">
-            <button onclick="saveContact()">Save</button>
-        </div>
-    </div>
-    <div class="modal" id="infoModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeInfoPopup()">&times;</span>
-            <h2>Contact Info</h2>
-            <p id="infoName"></p>
-            <p id="infoPhone"></p>
-            <p id="infoAddress"></p>
-            <p id="infoEmail"></p>
-        </div>
-        
-      
-    </div>
-    <footer>
-        &copy; This project Devlope By Yasmeen & Shorq 2024  
-     </footer>
-</body>
-</html>
+body {
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin: 0;
+  padding: 0;
+  background: rgb(231,187,206);
+  background: radial-gradient(circle, rgb(233, 176, 202) 9%, rgb(215, 227, 241) 100%);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: radial-gradient(circle, rgba(238, 232, 236, 0.432) 19%, rgba(231,187,206,0.25253851540616246) 91%, rgb(233, 236, 240) 100%);;
+  border: 3px solid #ddd;
+
+}
+ header {
+  background-color:radial-gradient(circle, rgba(210, 173, 193, 0.432) 19%, rgba(231,187,206,1) 91%, rgba(186,206,231,1) 100%);; 
+    color: rgb(13, 13, 13);
+    padding: 15px;
+    text-align: center;
+}
+
+
+footer {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  background-color:radial-gradient(circle, rgba(232,80,162,0.4318102240896359) 19%, rgba(231,187,206,1) 91%, rgba(186,206,231,1) 100%);; 
+  padding: 10px;
+  border-top: 1px solid #ddd; 
+  font-size: 14px; 
+  color: #333; 
+}
+
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+.search-bar input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  
+}
+
+.search-bar i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-list img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
+  
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
+  
+  animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.contact-img:hover {
+  transform: scale(1.1);
+}
+
+.contact-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.actions button {
+  font-size: 18px;
+  border: none;
+  background: none;
+}
+
+.actions button img {
+  width: 33px;
+  height: 33px;
+}
+
+@media (max-width: 600px) {
+  .container {
+      width: 95%;
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+}
