@@ -25,8 +25,14 @@
             
         </div>
         <div class="actions">
-            <button class="add icon" onclick="openPopup()"><img src="image/add-user.png" alt=""></button>
-            <button class="delete icon" onclick="deleteAllContacts()"><img src="image/delete.png" alt=""></button>
+            <button class="add icon" onclick="openPopup()" title="Add Contact">
+                <img src="image/add-user.png" alt="Add User">
+              </button>
+              
+              <button class="delete icon" onclick="deleteAllContacts()" title="Delete All Contacts">
+                <img src="image/delete.png" alt="Delete All">
+              
+              </button>
            
         </div>
         <ul class="list contact-list">
@@ -39,7 +45,7 @@
             <input type="hidden" id="contactIndex">
             <input type="text" id="inputUserName" placeholder="Name">
             <input type="text" id="inputUserPhone" placeholder="Phone">
-            <input type="file" id="inputUserPhoto">
+            <input type="file" id="inputUserPhoto" title="Upload Photo" placeholder="Choose a photo">
             <button onclick="saveContact()">Save</button>
         </div>
     </div>
