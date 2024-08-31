@@ -7,36 +7,26 @@
     <link rel="stylesheet" href="style.css">
     <script src="js.js" defer></script>
 </head>
-     <header> 
-            <h1>Phone Book </h1>
-        </header>
-    
 <body>
+    <header>
+        <h1>Phone Book</h1>
+    </header>
     <div class="container">
-      
-    
-        <h4 id="peopleCount">  5 People</h4>
+        <h4 id="peopleCount">5 People</h4>
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search...">
-            <i class="Search icon"><img src="" alt=""></i>
+
         </div>
-        <div id="searchActivePage" style="display: none;">
-           
-            
-        </div>
+        <div id="searchActivePage" style="display: none;"></div>
         <div class="actions">
             <button class="add icon" onclick="openPopup()" title="Add Contact">
                 <img src="image/add-user.png" alt="Add User">
-              </button>
-              
-              <button class="delete icon" onclick="deleteAllContacts()" title="Delete All Contacts">
+            </button>
+            <button class="delete icon" onclick="deleteAllContacts()" title="Delete All Contacts">
                 <img src="image/delete.png" alt="Delete All">
-              
-              </button>
-           
+            </button>
         </div>
-        <ul class="list contact-list">
-        </ul>
+        <ul class="list contact-list"></ul>
     </div>
     <div class="modal" id="myModal" onclick="closeModal(event)">
         <div class="modal-content">
@@ -45,7 +35,9 @@
             <input type="hidden" id="contactIndex">
             <input type="text" id="inputUserName" placeholder="Name">
             <input type="text" id="inputUserPhone" placeholder="Phone">
-            <input type="file" id="inputUserPhoto" title="Upload Photo" placeholder="Choose a photo">
+            <input type="text" id="inputUserAddress" placeholder="Address">
+            <input type="text" id="inputUserEmail" placeholder="Email">
+            <input type="file" id="inputUserPhoto" title="Upload Photo">
             <button onclick="saveContact()">Save</button>
         </div>
     </div>
@@ -58,11 +50,9 @@
             <p id="infoAddress"></p>
             <p id="infoEmail"></p>
         </div>
-        
-      
     </div>
     <footer>
-        &copy; This project Devlope By Yasmeen & Shorq 2024  
-     </footer>
+        &copy; This project Developed By Yasmeen & Shorq 2024
+    </footer>
 </body>
 </html>
