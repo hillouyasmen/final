@@ -20,8 +20,9 @@ const searchActivePage = document.getElementById('searchActivePage');
 //method loadconcats this means all the info we put js he will loading in the html page 
 function loadContacts(filteredUsers = users) {
   filteredUsers.sort((a, b) => a.username.localeCompare(b.username));
-
+  
   list.innerHTML = ''; 
+
   filteredUsers.forEach((user, index) => {
     const item = document.createElement('li');
     item.className = "contact-item";
@@ -39,7 +40,7 @@ function loadContacts(filteredUsers = users) {
     `;
     list.appendChild(item);
   });
-  updatePeopleCount();
+  updatePeopleCount(); 
 }
 //method to show contacts info 
 function showContactInfo(index) {
@@ -83,13 +84,22 @@ function saveContact() {
   const photoInput = document.getElementById('inputUserPhoto');
   let photo = '';
 
-  const duplicateUser = users.find(user => user.username === name || user.phone === phone);
-
-  if (duplicateUser && index === '') {
-    alert("Contact with the same name or phone number already exists.");
+  // Validate that the phone number contains only digits
+  const phonePattern = /^[0-9]+$/;
+  if (!phonePattern.test(phone)) {
+    alert("Phone number can only contain digits.");
     return;
   }
 
+  // Check for duplicate contacts but ignore the one being edited
+  const duplicateUser = users.find((user, i) => (i != index) && (user.username === name || user.phone === phone));
+
+  if (duplicateUser) {
+    alert("A contact with the same name or phone number already exists.");
+    return;
+  }
+
+  // Handling the photo input
   if (photoInput.files && photoInput.files[0]) {
     const reader = new FileReader();
     reader.onload = function (e) {
@@ -101,7 +111,7 @@ function saveContact() {
       }
       closeModal({ target: document.getElementById('myModal') });
       loadContacts();
-    }
+    };
     reader.readAsDataURL(photoInput.files[0]);
   } else {
     if (index === '') {
@@ -113,6 +123,7 @@ function saveContact() {
     loadContacts();
   }
 }
+
 
 //method to edit the contcat 
 function editContact(index) {
